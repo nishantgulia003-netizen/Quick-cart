@@ -1,15 +1,40 @@
-function ProductCard({ product }) {
+import "../styles/ProductCard.css";
+
+function ProductCard({ product, onAddToCart }) {
+
   return (
-    <div className="card">
-      <img src={product.image} alt={product.name} />
+    <div className="product-card">
 
-      <h3>{product.name}</h3>
+      <div className="product-image-container">
+        <img
+          src={product.image}
+          alt={product.name}
+          className="product-image"
+        />
+      </div>
 
-      <p>{product.description}</p>
+      <div className="product-info">
 
-      <p><strong>{product.price}</strong></p>
+        <h3 className="product-name">{product.name}</h3>
 
-      <span>{product.category}</span>
+        <p className="product-description">
+          {product.description}
+        </p>
+
+        <div className="product-footer">
+          <span className="product-price">${product.price}</span>
+          <span className="product-category">{product.category}</span>
+        </div>
+
+        <button
+          className="add-to-cart-btn"
+          onClick={() => onAddToCart(product)}
+        >
+          Add to Cart
+        </button>
+
+      </div>
+
     </div>
   );
 }
